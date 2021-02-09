@@ -13,6 +13,19 @@
   }
 }
 
+.node_div_main {
+  padding: 5px;
+  background-color: darkgray;
+}
+
+.node_div_sub {
+  padding: 5px;
+  background-color: lightgrey;
+}
+.react-flow .react-flow__node-default {
+  border: transparent;
+  padding: 0;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
