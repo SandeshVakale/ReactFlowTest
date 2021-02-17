@@ -36,6 +36,30 @@ const CustomNodeComponent = ({data} : { data: any }) => {
         <div className={'node_div_main'}>{data.title}</div>
         <div className={'node_div_sub'}>{data.lable1}</div>
         <div className={'node_div_sub'}>{data.lable2}</div>
+          <Handle
+              type="target"
+              position={Position.Left}
+              style={{ background: '#555' }}
+              onConnect={(params) => console.log('handle onConnect', params)}
+          />
+          <input
+              className="nodrag"
+              type="color"
+              onChange={data.onChange}
+              defaultValue={data.color}
+          />
+          <Handle
+              type="source"
+              position={Position.Left}
+              id="a"
+              style={{ top: 10, background: '#555' }}
+          />
+          <Handle
+              type="source"
+              position={Position.Left}
+              id="b"
+              style={{ bottom: 10, top: 'auto', background: '#555' }}
+          />
       </div>
   );
 }

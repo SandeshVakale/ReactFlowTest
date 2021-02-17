@@ -14,13 +14,14 @@
 }
 
 .node_div_main {
-  padding: 5px;
-  background-color: darkgray;
+  padding: 15px;
+  background-color: gray;
 }
 
 .node_div_sub {
-  padding: 5px;
-  background-color: lightgrey;
+  border: 1px solid gray;
+  padding: 15px;
+  background-color: white;
 }
 .react-flow .react-flow__node-default {
   border: transparent;

@@ -5,7 +5,7 @@ import ReactFlow, {
     addEdge,
     Elements,
     Edge,
-    Connection,
+    Connection, Handle, Position,
 } from 'react-flow-renderer';
 import './App.css'
 import localforage from 'localforage';
@@ -26,16 +26,30 @@ const getNodeId = () => `randomnode_${+new Date()}`;
 const CustomNodeComponent = ({data} : { data: any }) => {
     return (
         <div style={customNodeStyles}>
-            <div className={'node_div_main'}>{data.title}</div>
-            <div className={'node_div_sub'}>{data.lable1}</div>
-            <div className={'node_div_sub'}>{data.lable2}</div>
+            <div className={'node_div_main'}>
+                {data.title}</div>
+            <div className={'node_div_sub'}>
+                <Handle
+                    type="source"
+                    position={Position.Left}
+                    id="a"
+                    style={{ top: '50%', background: '#555' }}
+            />{data.lable1}</div>
+            <div className={'node_div_sub'}>
+                <Handle
+                    type="source"
+                    position={Position.Left}
+                    id="b"
+                    style={{ top: '80%', background: '#555' }}
+            />
+            {data.lable2}</div>
         </div>
     );
 }
 const initialElements = [
     { id: '1', className: 'react-flow__node-default', data: { label: <CustomNodeComponent data={{ title: 'Front Vision', lable1: 'Frames(1)', lable2: '30 Hz' }} /> }, position: { x: 100, y: 100 } },
-    { id: '2', className: 'react-flow__node-default', data: { label: <CustomNodeComponent data={{ title: 'Pedistrian ROI', lable1: 'Frames(1)', lable2: null }} /> }, position: { x: 100, y: 200 } },
-    { id: 'e1-2', source: '1', target: '2' },
+    { id: '2', className: 'react-flow__node-default', data: { label: <CustomNodeComponent data={{ title: 'Pedistrian ROI', lable1: 'Frames(1)', lable2: '30 Hz' }} /> }, position: { x: 100, y: 200 } },
+    { id: 'e1-2', source: '1', target: '2', type: 'smoothstep' },
 ];
 
 const SaveRestore = () => {
@@ -93,6 +107,7 @@ const SaveRestore = () => {
                 elements={elements}
                 onElementsRemove={onElementsRemove}
                 onConnect={onConnect}
+                // connectionLineComponent=
                 onLoad={setRfInstance}
             >
             </ReactFlow>
